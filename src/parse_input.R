@@ -38,7 +38,7 @@ parse_yaml = function(o, scenario, fit = NULL, uncert = NULL, read_array = FALSE
   list[y, u] = overwrite_defaults(y, y_user)
   
   # If we only need uncertainty details, return out now
-  if (!is.null(uncert) && uncert == "*read*")
+  if (!is.null(uncert) && (uncert == "*read*"))
     return(u)
   
   # ---- Apply fitting/fitted parameters if provided ----

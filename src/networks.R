@@ -453,8 +453,8 @@ load_polymod = function(p, age_bins = p$ages) {
   polymod_data = contact_matrix(survey     = polymod, 
                                 countries  = p$contact_matrix_countries, 
                                 age.limits = age_bins, 
-                                symmetric  = TRUE, 
-                                quiet      = TRUE) %>% suppressWarnings()
+                                symmetric  = TRUE)
+                                # quiet      = TRUE) %>% suppressWarnings()
   
   # Convert matrix to datatable and store along with age group pop sizes
   polymod = list(matrix   = data.table(polymod_data$matrix), 

@@ -19,10 +19,10 @@ version_info = R.Version()
 # Construct version number from list details
 version_num = paste0(version_info$major, ".",  version_info$minor)
 
-# Throw an error if this R version is unsuitable
-if (!version_num %in% stable_versions)
-  stop("This software is stable with R version(s): ", stable_str,
-       " (currently running ", version_num, ")")
+# # Throw an error if this R version is unsuitable
+# if (!version_num %in% stable_versions)
+#   stop("This software is stable with R version(s): ", stable_str,
+#        " (currently running ", version_num, ")")
 
 # ---- Source files ----
 
@@ -134,7 +134,7 @@ pacman::p_load_gh(gh_packages)
 # ---- Python packages and files ----
 
 # Specify conda environment
-# use_condaenv("r-reticulate")
+use_condaenv("r-reticulate")
 
 # Skip this step if no python packages needed
 if (length(py_packages) > 0) {

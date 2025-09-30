@@ -3,10 +3,10 @@
 # ---- Simulation settings ----
 
 # Number of people to simulate
-population_size: 100000
+population_size: 1000000
 
 # Number of days to simulate
-n_days: 200
+n_days: 120
 
 # ---- Initialisation settings ----
 
@@ -14,7 +14,7 @@ n_days: 200
 previously_infected: 0.3
 
 # Number of days over which these past infections have occured
-n_days_init: -360
+n_days_init: -0
 
 # Seasonality profile
 seasonality_fn: 
@@ -24,10 +24,10 @@ seasonality_fn:
     from: -1
     to: 1
     length.out: 365
-seasonality_scaler: 0.3
+seasonality_scaler: 0.0
 
 # Number of days to shift seasonality start
-seasonality_shift: 120  # 0 represents mid-winter
+seasonality_shift: 0  # 0 represents mid-winter
 
 # ---- Air pollution factors ----
 
@@ -38,8 +38,8 @@ air_pollution_exposure: 0
 #
 # SOURCES: xxx
 air_pollution:
-  susceptibility: 1.0  # Increase in susceptibility per microgram / m^3 of air polutant
-  severity: 1.0        # Increase in severity per microgram / m^3 of air polutant
+  susceptibility: 0.0  # Increase in susceptibility per microgram / m^3 of air polutant
+  severity: 0.0        # Increase in severity per microgram / m^3 of air polutant
   
 # Relationship between pollution exposure and susceptibility/severity
 air_pollution_relationship: "linear"  # OPTIONS: 'linear', 'log' or 'log10'
@@ -75,12 +75,12 @@ network_structure: "age"
 network_layers: household, school, workplace
 
 # Countries to pull network matrix data from
-contact_matrix_countries: DE, IT, FR  # ISO Alpha-2 country codes (en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+contact_matrix_countries: DE  # ISO Alpha-2 country codes (en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
 
 # ---- Importations ----
 
 # Importated infections per day
-import_constant: 1.5  # per 100k people
+import_constant: 0 # per 100k people
 
 # ---- Viral variants ----
 
@@ -186,12 +186,12 @@ vaccine_update:
 vaccine_rollout: 
 - id: high_priority
   coverage: 0.8
-  start: -180   # Date index for primary vaccination to begin
-  end: -150     # Date index for primary vaccination to reach 'coverage'
+  start: 180   # Date index for primary vaccination to begin
+  end: 150     # Date index for primary vaccination to reach 'coverage'
 - id: low_priority
   coverage: 0.6
-  start: -150
-  end: -120
+  start: 150
+  end: 120
   
 # Vaccine booster rollout (only groups to recieve a booster need to be specified)
 booster_doses: 1000  # Maximum number of doses per day (per 100,000 people)

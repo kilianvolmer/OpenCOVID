@@ -106,10 +106,10 @@ set_options = function(do_step = NA, quiet = FALSE) {
   o$best_estimate_simulation = "mean"
   
   # Number of seeds to run for each scenario (including baseline)
-  o$n_seeds_analysis = 10
+  o$n_seeds_analysis = 1
   
   # Number of parameters sets to sample when simulating parameter uncertainty
-  o$n_parameter_sets = 10  # Best to set to 1 if not simulating parameter uncertainty
+  o$n_parameter_sets = 1  # Best to set to 1 if not simulating parameter uncertainty
 
   # Flag for simulating each uncertainty parameter set n_seeds times
   #

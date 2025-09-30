@@ -34,7 +34,7 @@ run_model_test = function(o, scenario = "baseline", rerun = TRUE) {
     result = model(o, scenario,
                    seed    = 1,
                    fit     = fit_list,
-                   uncert  = uncert_list,
+                   uncert  = NULL,
                    do_plot = FALSE,
                    verbose = "bar")
     

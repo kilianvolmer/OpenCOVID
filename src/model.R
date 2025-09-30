@@ -26,12 +26,16 @@ model = function(o, scenario, seed = NA, fit = NULL, uncert = NULL, do_plot = FA
   # ---- Generate model parameters ----
   
   if (verbose != "none") message(" - Parsing input")
-  
   # Load and parse user-defined inputs for this scenario
   yaml = parse_yaml(o, scenario, fit = fit, uncert = uncert, read_array = TRUE)
-  
   # Shorthand for model parameters
   p = yaml$parsed
+
+  pop_sizes <- c(25000, 50000, 100000, 250000, 500000, 1000000, 2000000, 4000000,
+                 8000000, 16000000, 32000000, 64000000, 128000000)
+
+  for (size in pop_sizes){
+    p$population_size = size
   
   # ---- Model set up ----
   
@@ -85,6 +89,7 @@ model = function(o, scenario, seed = NA, fit = NULL, uncert = NULL, do_plot = FA
   if (verbose == "bar")
     pb = start_progress_bar(p$n_days)
   
+  t <- system.time({
   # Iterate through time steps - starting from first imported case(s)
   for (i in 1 : p$n_days) {
     
@@ -152,7 +157,11 @@ model = function(o, scenario, seed = NA, fit = NULL, uncert = NULL, do_plot = FA
     if (verbose == "bar") 
       setTxtProgressBar(pb, i)
   }
-  
+  })
+
+  message()
+  message("Time elapsed: ", t["elapsed"])
+  message("Time user: ", t["user"])
   # ---- Close up ----
   
   # Close progress bar
@@ -184,6 +193,8 @@ model = function(o, scenario, seed = NA, fit = NULL, uncert = NULL, do_plot = FA
   if (verbose != "none")
     message("  > Model runtime: ", results$time_taken)
   
+  }
+
   return(results)
 }
 
